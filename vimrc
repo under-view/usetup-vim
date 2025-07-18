@@ -45,6 +45,10 @@ set showmatch
 set incsearch
 set hlsearch
 
+" set tabstop=4
+" set softtabstop=0 noexpandtab
+" set shiftwidth=4
+
 " NERDTree show hidden files
 let NERDTreeShowHidden=1
 let g:NERDTreeWinSize=40
@@ -60,6 +64,8 @@ autocmd FileType cpp,c source $HOME/.vim/syntax/vulkan.vim
 
 " Start NERDTree and put the cursor back in the other window.
 autocmd VimEnter * NERDTree | wincmd p
+" Auto update NERDTree when window opens up.
+autocmd BufEnter NERD_tree_* | execute 'normal R'
 
 " Exit Vim if NERDTree is the only window remaining in the only tab.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
